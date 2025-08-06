@@ -1,0 +1,1 @@
+console.log("main.js prêt à prendre le contrôle du DOM !");
