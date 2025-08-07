@@ -13,6 +13,21 @@ async function fetchWorks() {
   }
 }
 
+async function fetchCategories() {
+  try {
+    const response = await fetch("http://localhost:5678/api/categories/");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const categories = await response.json();
+
+    console.log(categories)
+
+  } catch (error) {
+    console.error("Erreur lors de la récupération des catégories de l'API :", error.message);
+  }
+}
+
 function displayWorks(works) {
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
@@ -36,3 +51,4 @@ function displayWorks(works) {
 }
 
 fetchWorks();
+fetchCategories();
