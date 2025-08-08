@@ -52,6 +52,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+button {
+    all: unset;
+    cursor: pointer;
+}
 /** end reset css**/
 
 body {
@@ -138,6 +143,36 @@ li:hover {
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+.filters-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin: 50px 0;
+}
+
+.filter {
+	height: 37px;
+	min-width: 100px;
+
+	padding: 0 0.65em;
+
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 16px;
+	color: #1D6154;
+
+	background-color: transparent;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+}
+
+.filter.active {
+	background-color: #1D6154;
+	color: white;
+	border-color: #1D6154;
 }
 
 .gallery {

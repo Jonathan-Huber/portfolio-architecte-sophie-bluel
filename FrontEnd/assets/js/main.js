@@ -21,7 +21,7 @@ async function fetchCategories() {
     }
     const categories = await response.json();
 
-    console.log(categories)
+    displayFilters(categories);
 
   } catch (error) {
     console.error("Erreur lors de la récupération des catégories de l'API :", error.message);
@@ -45,9 +45,26 @@ function displayWorks(works) {
     figure.appendChild(img);
     figure.appendChild(figcaption);
     gallery.appendChild(figure);
-
   });
+}
 
+function displayFilters(categories) {
+  const filtersContainer = document.querySelector(".filters-container");
+  filtersContainer.innerHTML = "";
+
+  const allButton = document.createElement("button");
+    allButton.classList.add("filter"); 
+    allButton.type = "button";
+    allButton.textContent = "Tous";
+    filtersContainer.appendChild(allButton);
+
+  categories.forEach(category => {
+    const filter = document.createElement("button");
+    filter.classList.add("filter"); 
+    filter.type = "button";
+    filter.textContent = category.name;
+    filtersContainer.appendChild(filter);
+  });
 }
 
 fetchWorks();
