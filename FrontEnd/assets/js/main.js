@@ -1,30 +1,31 @@
-async function fetchWorks() {
+async function init() {
   try {
-    const response = await fetch("http://localhost:5678/api/works/");
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    // Récuperer les catégories et afficher les filtres
+    const categoriesResponse = await fetch("http://localhost:5678/api/categories/");
+    if (!categoriesResponse.ok) {
+      throw new Error(`HTTP error! status: ${categoriesResponse.status}`);
     }
-    const works = await response.json();
-
-    displayWorks(works);
-
-  } catch (error) {
-    console.error("Erreur lors de la récupération des travaux de l'API :", error.message);
-  }
-}
-
-async function fetchCategories() {
-  try {
-    const response = await fetch("http://localhost:5678/api/categories/");
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const categories = await response.json();
-
+    const categories = await categoriesResponse.json();
+    console.log("Catégories récupérées :", categories);
     displayFilters(categories);
+    console.log("Filtres affichés");
+
+    // Récuperer les projets
+    const worksResponse = await fetch("http://localhost:5678/api/works/");
+    if (!worksResponse.ok) {
+      throw new Error(`HTTP error! status: ${worksResponse.status}`);
+    }
+    const works = await worksResponse.json();
+    console.log("Works récupérés :", works);
+    displayWorks(works);
+    console.log("Works affichés");
+
+    // Activer les filtres
+    setupFilter(works);
+    console.log("Filtres activés");
 
   } catch (error) {
-    console.error("Erreur lors de la récupération des catégories de l'API :", error.message);
+    console.error("Erreur lors de l'initialisation :", error.message);
   }
 }
 
@@ -53,7 +54,7 @@ function displayFilters(categories) {
   filtersContainer.innerHTML = "";
 
   const allButton = document.createElement("button");
-    allButton.classList.add("filter"); 
+    allButton.classList.add("filter", "active"); 
     allButton.type = "button";
     allButton.textContent = "Tous";
     filtersContainer.appendChild(allButton);
@@ -67,5 +68,23 @@ function displayFilters(categories) {
   });
 }
 
-fetchWorks();
-fetchCategories();
+function setupFilter(works) {
+  const filterButtons = document.querySelectorAll(".filter");
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () =>{
+      const selectedCategory = button.textContent;
+
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      const filteredWorks = selectedCategory === "Tous"
+        ? works
+        : works.filter(work => work.category.name === selectedCategory);
+
+        displayWorks(filteredWorks);
+    })
+  })
+}
+
+init();
