@@ -32,6 +32,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+	margin: 0;
 }
 
 ol, ul {
@@ -55,22 +56,33 @@ table {
 
 button {
     all: unset;
+	display: inline-block;
     cursor: pointer;
 	box-sizing: border-box;
 }
 /** end reset css**/
 
 body {
-	max-width: 1140px;
-	margin:auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
+	background-color: #FFFEF8;
+}
+
+.container {
+	max-width: 1440px;
+	margin: 0 auto;
+	
 }
 
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0;
+	/* margin: 0px 150px; */
+	padding: 50px 150px;
+}
+
+main {
+	padding: 0 245px;
 }
 
 section {
@@ -99,24 +111,36 @@ h2 {
 	color: #1D6154;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 nav ul {
 	display: flex;
 	align-items: center;
+	gap: 44px;
 	list-style-type: none;
 }
 
-nav li {
-	padding: 0 10px;
+nav a {
 	font-size: 1.2em;
 }
 
+nav li img {
+	width: 22px;
+	height: auto;
+}
+
 li:hover {
-	color: #B1663C;
+	font-weight: 700;
 }
 
 #introduction {
 	display: flex;
 	align-items: center;
+	margin: 139px 0;
 }
 
 #introduction figure {
@@ -126,19 +150,22 @@ li:hover {
 #introduction img {
 	display: block;
 	margin: auto;
-	width: 80%;
+	width: 100%;
 }
 
 #introduction article {
+	display: flex;
+	flex-direction: column;
 	flex: 1;
+	gap: 1.7em;
 }
 
 #introduction h2 {
-	margin-bottom: 1em;
+	padding-left: 72px;
 }
 
 #introduction p {
-	margin-bottom: 0.5em;
+	padding-left: 72px;
 }
 
 #portfolio h2 {
@@ -187,10 +214,15 @@ li:hover {
 
 .gallery img {
 	width: 100%;
+	height: 407px;
+}
+
+.gallery figcaption {
+	margin-top: 0.5em;
 }
 
 #contact {
-	width: 50%;
+	width: 40%;
 	margin: auto;
 }
 
@@ -210,7 +242,7 @@ li:hover {
 }
 
 #contact input {
-	height: 50px;
+	height: 51px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -218,6 +250,7 @@ li:hover {
 
 #contact label {
 	margin: 2em 0 1em 0;
+	font-weight: 500;
 }
 
 #contact textarea {
@@ -225,20 +258,45 @@ li:hover {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+#contact input[type="submit"]{
+	height: 36px;
 	font-family: 'Syne';
 	font-weight: 700;
+	font-size: 1em;
 	color: white;
 	background-color: #1D6154;
 	margin : 2em auto ;
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
+	cursor: pointer;
+}
+
+#contact input[type="submit"]:hover{
+	background-color: #0E2F28;
+}
+
+footer {
+	background-color: #FFF;
 }
 
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em;
+	max-width: 1440px;
+
+	margin: 0 auto;
+	padding: 2em;
 }
 
+footer nav li {
+	margin-right: 79px;
+
+	font-size: 1em;
+	font-weight: 300;
+}
+
+footer a {
+	font-size: 1em;
+	font-weight: 300;
+}
