@@ -1,34 +1,26 @@
-async function init() {
-  try {
-    // Récuperer les catégories et afficher les filtres
-    const categoriesResponse = await fetch("http://localhost:5678/api/categories/");
-    if (!categoriesResponse.ok) {
-      throw new Error(`HTTP error! status: ${categoriesResponse.status}`);
-    }
-    const categories = await categoriesResponse.json();
-    console.log("Catégories récupérées :", categories);
-    displayFilters(categories);
-    console.log("Filtres affichés");
-
-    // Récuperer les projets
-    const worksResponse = await fetch("http://localhost:5678/api/works/");
-    if (!worksResponse.ok) {
-      throw new Error(`HTTP error! status: ${worksResponse.status}`);
-    }
-    const works = await worksResponse.json();
-    console.log("Works récupérés :", works);
-    displayWorks(works);
-    console.log("Works affichés");
-
-    // Activer les filtres
-    setupFilter(works);
-    console.log("Filtres activés");
-
-  } catch (error) {
-    console.error("Erreur lors de l'initialisation :", error.message);
-  }
+// Récuperer les catégories et afficher les filtres
+async function fetchCategories() {
+const response = await fetch("http://localhost:5678/api/categories/");
+if (!response.ok) {
+  throw new Error(`HTTP error! status: ${response.status}`);
+}
+const categories = await response.json();
+displayFilters(categories);
+return categories;
 }
 
+// Récuperer les projets
+async function fetchWorks() {
+const response = await fetch("http://localhost:5678/api/works/");
+if (!response.ok) {
+  throw new Error(`HTTP error! status: ${response.status}`);
+}
+const works = await response.json();
+displayWorks(works);
+return works;
+}
+
+// Afficher les projets
 function displayWorks(works) {
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
@@ -49,6 +41,7 @@ function displayWorks(works) {
   });
 }
 
+// Afficher les filtres
 function displayFilters(categories) {
   const filtersContainer = document.querySelector(".filters-container");
   filtersContainer.innerHTML = "";
@@ -68,6 +61,7 @@ function displayFilters(categories) {
   });
 }
 
+// Activer les filtres
 function setupFilter(works) {
   const filterButtons = document.querySelectorAll(".filter");
 
@@ -83,8 +77,19 @@ function setupFilter(works) {
         : works.filter(work => work.category.name === selectedCategory);
 
         displayWorks(filteredWorks);
-    })
-  })
+    });
+  });
+}
+
+// Initialiser la page
+async function init() {
+  try {
+    await fetchCategories();
+    const works = await fetchWorks();
+    setupFilter(works);
+  } catch (error) {
+    console.error("Erreur lors de l'initialisation :", error.message);
+  }
 }
 
 init();
