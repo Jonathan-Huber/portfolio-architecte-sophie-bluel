@@ -315,3 +315,7 @@ footer a {
 #login {
 	margin: 100px auto 355px auto;
 }
+
+#error {
+	text-align: center;
+}
