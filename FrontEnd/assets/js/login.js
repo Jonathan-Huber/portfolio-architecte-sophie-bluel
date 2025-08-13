@@ -24,7 +24,9 @@ loginForm.addEventListener("submit", async (event) => {
 
   if (!response.ok) {
     if (response.status === 401) {
-      errorDiv.textContent = "Identifiants incorrects.";
+      errorDiv.textContent = "Mot de passe incorrect.";
+    } else if (response.status === 404) {
+    errorDiv.textContent = "Utilisateur non trouvé.";
     } else {
       errorDiv.textContent = "Erreur serveur, veuillez réessayer plus tard.";
     }
