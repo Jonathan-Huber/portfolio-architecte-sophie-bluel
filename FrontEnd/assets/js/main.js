@@ -41,6 +41,28 @@ function displayWorks(works) {
   });
 }
 
+// Afficher les projets dans la modale
+function displayWorksModal(works) {
+  const modalGallery = document.querySelector(".modal-gallery");
+  modalGallery.innerHTML = "";
+
+  works.forEach(work => {
+    const figure = document.createElement("figure");
+
+    const img = document.createElement("img");
+    img.src = work.imageUrl;
+    img.alt = work.title;
+
+    const trashBtn = document.createElement("button");
+    trashBtn.classList.add("modal-trashBtn");
+    trashBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+
+    figure.appendChild(img);
+    figure.appendChild(trashBtn);
+    modalGallery.appendChild(figure);
+  });
+}
+
 // Afficher les filtres
 function displayFilters(categories) {
   const filtersContainer = document.querySelector(".filters-container");
@@ -167,6 +189,7 @@ async function init() {
     const token = localStorage.getItem('authToken');
     if (token) {
       displayConnectedMode();
+      displayWorksModal(works);
     } else {
       displayGuestMode();
     }
