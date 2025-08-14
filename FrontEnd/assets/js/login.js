@@ -23,12 +23,10 @@ loginForm.addEventListener("submit", async (event) => {
   });
 
   if (!response.ok) {
-    if (response.status === 401) {
-      errorDiv.textContent = "Mot de passe incorrect.";
-    } else if (response.status === 404) {
-    errorDiv.textContent = "Utilisateur non trouvé.";
+    if (response.status === 401 || response.status === 404) {
+      errorDiv.textContent = "Email ou mot de passe incorrect.";
     } else {
-      errorDiv.textContent = "Erreur serveur, veuillez réessayer plus tard.";
+      errorDiv.textContent = "Impossible de se connecter au serveur. Vérifiez votre connexion ou réessayez plus tard.";
     }
     return;
   }
@@ -40,6 +38,6 @@ loginForm.addEventListener("submit", async (event) => {
     window.location.href = "./index.html";
 
     } catch (error) {
-      errorDiv.textContent = "Erreur réseau, vérifiez votre connexion.";
+      errorDiv.textContent = "Impossible de se connecter au serveur. Vérifiez votre connexion ou réessayez plus tard.";
     }
   });
