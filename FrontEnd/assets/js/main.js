@@ -87,7 +87,10 @@ function displayConnectedMode() {
   if (filtersContainer) filtersContainer.classList.add("hidden");
 
   const btnEdit = document.querySelector("#btn-edit");
-  if (btnEdit) btnEdit.classList.remove("hidden");
+  if (btnEdit) {
+    btnEdit.classList.remove("hidden");
+    initModal()
+  }
 
   const liLogout = document.querySelector("#li-logout");
   if (liLogout) {
@@ -119,6 +122,33 @@ function displayGuestMode() {
 
   const editBanner = document.getElementById('edit-banner');
   if (editBanner) editBanner.classList.add('hidden');
+}
+
+// Fonction d'initialisation de la modale
+function initModal() {
+  const btnEdit = document.querySelector("#btn-edit");
+  const modal = document.querySelector(".modal");
+  const modalClose = document.querySelector(".modal-close");
+
+  if (!btnEdit || !modal || !modalClose) return;
+
+  btnEdit.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    modal.setAttribute("aria-hidden", "false");
+  });
+
+  modalClose.addEventListener("click", () => {
+    btnEdit.focus();
+    modal.classList.add("hidden");
+    modal.setAttribute("aria-hidden", "true");
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      modal.setAttribute("aria-hidden", "true");
+    }
+  });
 }
 
 // Déconnecte l'utilisateur en supprimant le token

@@ -50,8 +50,8 @@
       <section id="portfolio">
           <div class="portfolio-header">
             <h2>Mes Projets</h2>
-            <button id="btn-edit">
-              <i class="fa-solid fa-pen-to-square" class="hidden"></i> Modifier
+            <button id="btn-edit" data-target="#modal-edit" class="hidden">
+              <i class="fa-solid fa-pen-to-square"></i> Modifier
             </button>
           </div>
         <div class="filters-container"></div>
@@ -67,7 +67,7 @@
           <input type="email" name="email" id="email">
           <label for="message">Message</label>
           <textarea name="message" id="message" cols="30" rows="10"></textarea>
-          <input type="submit" value="Envoyer">
+          <input class="btn" type="submit" value="Envoyer">
         </form>
       </section>
     </main>
@@ -79,9 +79,22 @@
       </ul>
     </nav>
   </footer>
-
-  
-
+  <aside 
+    id="modal-edit" 
+    class="modal hidden" 
+    aria-hidden="true" 
+    role="dialog" 
+    aria-labelledby="modal-title"
+  >
+    <div class="modal-content">
+      <button class="modal-close" arial-label="fermer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h2 id="modal-title">Galerie photo</h3>
+      <div class="modal-gallery"></div>
+      <hr class="modal-separator">
+      <button class="btn">Ajouter une photo</button>
+    </div>
+  </aside>
 </body>
-
 </html>
