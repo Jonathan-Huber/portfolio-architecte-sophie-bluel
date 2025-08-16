@@ -6,8 +6,6 @@ export function initModal() {
   const modal = document.querySelector(".modal");
   const modalClose = document.querySelector(".modal-close");
 
-  if (!btnEdit || !modal || !modalClose) return;
-
   btnEdit.addEventListener("click", () => {
     modal.classList.remove("hidden");
     modal.setAttribute("aria-hidden", "false");
