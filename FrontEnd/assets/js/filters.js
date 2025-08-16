@@ -5,6 +5,7 @@ import { displayWorks } from "./display.js";
 // Activer les filtres
 export function setupFilter(works) {
   const filterButtons = document.querySelectorAll(".filter");
+  if (!filterButtons) return;
 
   filterButtons.forEach(button => {
     button.addEventListener("click", () =>{
