@@ -4,7 +4,7 @@ import { initModal } from "./modal.js";
 
 // Modifier l'affichage pour le mode connecté
 export function displayConnectedMode() {
-  document.getElementById('edit-banner').classList.remove('hidden');
+  document.querySelector("#edit-banner").classList.remove('hidden');
   document.querySelector("#li-login").classList.add("hidden");
   document.querySelector("#li-logout").classList.remove("hidden");
   document.querySelector("#btn-edit").classList.remove("hidden");
@@ -14,7 +14,7 @@ export function displayConnectedMode() {
 
 // Modifier l'affichage pour le mode invité
 export function displayGuestMode() {
-  document.getElementById('edit-banner').classList.add('hidden');
+  document.querySelector("#edit-banner").classList.add('hidden');
   document.querySelector("#li-login").classList.remove("hidden");
   document.querySelector("#li-logout").classList.add("hidden");
   document.querySelector("#btn-edit").classList.add("hidden");
