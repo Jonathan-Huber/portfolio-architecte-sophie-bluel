@@ -4,6 +4,7 @@ import { fetchCategories, fetchWorks } from "./api.js";
 import { displayConnectedMode, displayGuestMode } from "./auth.js";
 import { displayFilters, displayWorks, displayWorksModal } from "./display.js";
 import { setupFilter } from "./filters.js";
+import { setupDeleteButtons } from "./works.js";
 
 // Initialiser la page
 async function init() {
@@ -19,6 +20,7 @@ async function init() {
     if (token) {
       displayConnectedMode();
       displayWorksModal(works);
+      setupDeleteButtons();
     } else {
       displayGuestMode();
     }
