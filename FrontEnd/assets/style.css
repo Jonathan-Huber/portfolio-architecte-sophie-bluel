@@ -392,7 +392,7 @@ footer a {
 	position: relative;
 }
 
-.modal-trashBtn {
+.modal-deleteBtn {
 	position: absolute;
 	top: 4px;
 	right: 4px;
@@ -410,7 +410,7 @@ footer a {
 	border-radius: 2px;
 }
 
-.modal-trashBtn i{
+.modal-deleteBtn i{
 	font-size: 10px;
 }
 

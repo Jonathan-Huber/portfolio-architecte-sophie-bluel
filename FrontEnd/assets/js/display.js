@@ -53,12 +53,17 @@ export function displayWorksModal(works) {
     img.src = work.imageUrl;
     img.alt = work.title;
 
-    const trashBtn = document.createElement("button");
-    trashBtn.classList.add("modal-trashBtn");
-    trashBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("modal-deleteBtn");
+    deleteBtn.type = "button";
+    deleteBtn.dataset.id = work.id;
 
+    const icon = document.createElement("i");
+    icon.classList.add("fa-solid", "fa-trash-can")
+
+    deleteBtn.appendChild(icon);
     figure.appendChild(img);
-    figure.appendChild(trashBtn);
+    figure.appendChild(deleteBtn);
     modalGallery.appendChild(figure);
   });
 }
