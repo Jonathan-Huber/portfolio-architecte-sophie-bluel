@@ -1,7 +1,7 @@
 // MODAL.JS
 
-// Fonction d'initialisation de la modale
-export function initModal() {
+// Configurer la modale : ouverture, fermeture et clic en dehors pour la fermer
+export function setupModal() {
   const btnEdit = document.querySelector("#btn-edit");
   const modal = document.querySelector(".modal");
   const modalClose = document.querySelector(".modal-close");

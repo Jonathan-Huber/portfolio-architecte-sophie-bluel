@@ -1,6 +1,6 @@
 // auth.js
 
-import { initModal } from "./modal.js";
+import { setupModal } from "./modal.js";
 
 // Modifier l'affichage pour le mode connecté
 export function displayConnectedMode() {
@@ -8,7 +8,7 @@ export function displayConnectedMode() {
   document.querySelector("#li-login").classList.add("hidden");
   document.querySelector("#li-logout").classList.remove("hidden");
   document.querySelector("#btn-edit").classList.remove("hidden");
-  initModal()
+  setupModal()
   document.querySelector(".filters-container").classList.add("hidden");
 }
 
