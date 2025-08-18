@@ -3,7 +3,7 @@
 // Afficher les projets dans la gallery principale
 export function displayWorks(works) {
   const gallery = document.querySelector(".gallery");
-  gallery.innerHTML = "";
+  gallery.replaceChildren();
 
   works.forEach(work => {
     const figure = document.createElement("figure");
@@ -24,7 +24,7 @@ export function displayWorks(works) {
 // Afficher les filtres au dessus de la gallery principale
 export function displayFilters(categories) {
   const filtersContainer = document.querySelector(".filters-container");
-  filtersContainer.innerHTML = "";
+  filtersContainer.replaceChildren();
 
   const allButton = document.createElement("button");
   allButton.classList.add("filter", "active"); 
@@ -44,7 +44,7 @@ export function displayFilters(categories) {
 // Afficher les projets dans la modale
 export function displayWorksModal(works) {
   const modalGallery = document.querySelector(".modal-gallery");
-  modalGallery.innerHTML = "";
+  modalGallery.replaceChildren();
 
   works.forEach(work => {
     const figure = document.createElement("figure");
