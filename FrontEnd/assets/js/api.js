@@ -17,3 +17,16 @@ export async function fetchWorks() {
   }
   return response.json();
 }
+
+// Supprimer un projet dans L'API
+export async function deleteWorkAPI(workId, token) {
+  const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+    method: "DELETE",
+    headers: { Authorization: `Bearer ${token}`
+    }
+});
+  if (!response.ok) {
+    throw new Error(`Échec de la suppression (code ${response.status})`);
+  }
+  return true;
+}
