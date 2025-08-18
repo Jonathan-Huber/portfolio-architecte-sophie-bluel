@@ -1,6 +1,7 @@
 // WORKS.JS
 
 import { deleteWorkAPI } from "./api.js";
+import { removeWorkFromDOM } from "./display.js";
 
 // Activer les boutons de suppression lors du click
 export function setupDeleteButtons() {
@@ -14,6 +15,13 @@ export function setupDeleteButtons() {
     try {
       // Supprimer le works de l'API
       await deleteWorkAPI(workId, token);
+
+      // Supprimer le works de la galerie principal
+      removeWorkFromDOM(workId, document.querySelector(".gallery"));
+
+      // Supprimer le works de la galerie dans la modal
+      removeWorkFromDOM(workId, document.querySelector(".modal-gallery"));
+
     } catch (error) {
       console.error("Erreur lors de la suppression :", error.message);
     }

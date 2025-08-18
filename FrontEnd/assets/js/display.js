@@ -1,26 +1,5 @@
 // DISPLAY.JS
 
-// Afficher les projets dans la gallery principale
-export function displayWorks(works) {
-  const gallery = document.querySelector(".gallery");
-  gallery.replaceChildren();
-
-  works.forEach(work => {
-    const figure = document.createElement("figure");
-
-    const img = document.createElement("img");
-    img.src = work.imageUrl;
-    img.alt = work.title;
-
-    const figcaption = document.createElement("figcaption");
-    figcaption.textContent = work.title;
-
-    figure.appendChild(img);
-    figure.appendChild(figcaption);
-    gallery.appendChild(figure);
-  });
-}
-
 // Afficher les filtres au dessus de la gallery principale
 export function displayFilters(categories) {
   const filtersContainer = document.querySelector(".filters-container");
@@ -41,6 +20,28 @@ export function displayFilters(categories) {
   });
 }
 
+// Afficher les projets dans la gallery principale
+export function displayWorks(works) {
+  const gallery = document.querySelector(".gallery");
+  gallery.replaceChildren();
+
+  works.forEach(work => {
+    const figure = document.createElement("figure");
+    figure.dataset.id = work.id;
+
+    const img = document.createElement("img");
+    img.src = work.imageUrl;
+    img.alt = work.title;
+
+    const figcaption = document.createElement("figcaption");
+    figcaption.textContent = work.title;
+
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+    gallery.appendChild(figure);
+  });
+}
+
 // Afficher les projets dans la modale
 export function displayWorksModal(works) {
   const modalGallery = document.querySelector(".modal-gallery");
@@ -48,6 +49,7 @@ export function displayWorksModal(works) {
 
   works.forEach(work => {
     const figure = document.createElement("figure");
+    figure.dataset.id = work.id;
 
     const img = document.createElement("img");
     img.src = work.imageUrl;
@@ -56,7 +58,7 @@ export function displayWorksModal(works) {
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("modal-deleteBtn");
     deleteBtn.type = "button";
-    deleteBtn.dataset.id = work.id;
+    
 
     const icon = document.createElement("i");
     icon.classList.add("fa-solid", "fa-trash-can")
@@ -66,4 +68,11 @@ export function displayWorksModal(works) {
     figure.appendChild(deleteBtn);
     modalGallery.appendChild(figure);
   });
+}
+
+// Supprimer un projet dans le DOM
+export function removeWorkFromDOM(workId, container) {
+
+const figure = container.querySelector(`figure[data-id='${workId}']`);
+  if (figure) figure.remove();
 }
