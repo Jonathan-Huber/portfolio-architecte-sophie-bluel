@@ -90,10 +90,33 @@
       <button class="modal-close" arial-label="fermer">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <h2 id="modal-title">Galerie photo</h3>
+        <button class="modal-back hidden" aria-label="Retour">
+        <img src="./assets/icons/arrow-left.svg" alt="Retour">
+        </button>
+      <h3 id="modal-title">Galerie photo</h3>
       <div class="modal-gallery"></div>
+      
+      <div class="modal-upload form-section hidden">
+        <form action="#" class="modal-upload-form" method="post">
+          <label for="upload-photo" class="upload-photo">
+            <img src="./assets/icons/picture.svg">
+            <button class="upload-btn">+ Ajouter photo</button>
+            <p>jpg, png : 4mo max</p>
+          </label>
+          <input type="file" id="upload-photo" name="image" accept="image/*" class="visually-hidden">
+          <label for="title">Titre</label>
+          <input type="text" name="title" id="title">
+          <label for="category-select">Catégorie</label>
+          <select name="category" id="category-select">
+            <option value="" selected hidden></option>
+            <option value="1">Objets</option>
+            <option value="2">Appartements</option>
+            <option value="3">Hotels & Restaurants</option></select>
+        </form>
+      </div>
       <hr class="modal-separator">
-      <button class="btn">Ajouter une photo</button>
+      <button id="btn-add-photo" class="btn">Ajouter une photo</button>
+      <button id="btn-validate" class="btn disabled hidden">Valider</button>
     </div>
   </aside>
 </body>
