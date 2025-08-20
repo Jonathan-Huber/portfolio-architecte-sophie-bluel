@@ -59,7 +59,6 @@ export function displayWorksModal(works) {
     deleteBtn.classList.add("modal-deleteBtn");
     deleteBtn.type = "button";
     
-
     const icon = document.createElement("i");
     icon.classList.add("fa-solid", "fa-trash-can")
 
@@ -68,6 +67,48 @@ export function displayWorksModal(works) {
     figure.appendChild(deleteBtn);
     modalGallery.appendChild(figure);
   });
+}
+
+// Basculer la modale en mode "gallery"
+export function switchModalGallery() {
+  const modalGallery = document.querySelector(".modal-gallery");
+  modalGallery.classList.remove("hidden");
+
+  const modalUpload = document.querySelector(".modal-upload");
+  modalUpload.classList.add("hidden");
+
+  const modalTitle = document.querySelector("#modal-title");
+  modalTitle.textContent = "Galerie photo";
+
+  const btnAddPhoto = document.querySelector("#btn-add-photo");
+  btnAddPhoto.classList.remove("hidden");
+
+  const btnValidate = document.querySelector("#btn-validate");
+  btnValidate.classList.add("hidden");
+
+  const modalBack = document.querySelector(".modal-back");
+  modalBack.classList.add("hidden");
+}
+
+// Basculer la modale en mode "upload"
+export function switchModalUpload() {
+  const modalGallery = document.querySelector(".modal-gallery");
+  modalGallery.classList.add("hidden");
+
+  const modalUpload = document.querySelector(".modal-upload");
+  modalUpload.classList.remove("hidden");
+
+  const modalTitle = document.querySelector("#modal-title");
+  modalTitle.textContent = "Ajout photo";
+
+  const btnAddPhoto = document.querySelector("#btn-add-photo");
+  btnAddPhoto.classList.add("hidden");
+
+  const btnValidate = document.querySelector("#btn-validate");
+  btnValidate.classList.remove("hidden");
+
+  const modalBack = document.querySelector(".modal-back");
+  modalBack.classList.remove("hidden");
 }
 
 // Supprimer un projet dans le DOM

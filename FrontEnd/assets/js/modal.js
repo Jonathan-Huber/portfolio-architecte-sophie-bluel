@@ -1,5 +1,7 @@
 // MODAL.JS
 
+import { switchModalGallery, switchModalUpload } from "./display.js";
+
 // Configurer la modale : ouverture, fermeture et clic en dehors pour la fermer
 export function setupModal() {
   const btnEdit = document.querySelector("#btn-edit");
@@ -23,4 +25,12 @@ export function setupModal() {
       modal.setAttribute("aria-hidden", "true");
     }
   });
+}
+
+export function setupModalButtons() {
+  const modalBack = document.querySelector(".modal-back");
+  const btnUpload = document.querySelector("#btn-add-photo");
+
+  modalBack.addEventListener("click", switchModalGallery);
+  btnUpload.addEventListener("click", switchModalUpload);
 }
