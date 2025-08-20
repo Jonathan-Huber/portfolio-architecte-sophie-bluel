@@ -152,7 +152,7 @@ button {
 	box-sizing: border-box;
 }
 
-button:focus {
+button:focus-visible {
     outline: auto;
 }
 
