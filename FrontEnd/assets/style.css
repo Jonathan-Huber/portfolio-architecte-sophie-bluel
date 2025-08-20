@@ -486,22 +486,31 @@ footer a {
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	height: 169px;
 	gap: 6px;
 	background-color: #E8F1F6;
 	border-radius: 3px;
-	padding: 20px;
+	padding: 0;
 	margin: 0;
 	cursor: pointer;
 }
 
-.upload-photo img {
+.upload-photo .upload-img {
 	width: 76px;
 	height: 76px;
 }
 
+.preview-img {
+	height: 100%;
+	object-fit: cover;
+}
+
 .upload-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	color: #306685;
-	width: 173px;
+	width: auto;
 	height: 36px;
 	background-color: #CBD6DC;
 	border-radius: 50px;

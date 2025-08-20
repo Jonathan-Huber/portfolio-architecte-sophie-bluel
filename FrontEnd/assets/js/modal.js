@@ -1,6 +1,6 @@
 // MODAL.JS
 
-import { switchModalGallery, switchModalUpload } from "./display.js";
+import { displaySelectedImage, switchModalGallery, switchModalUpload } from "./display.js";
 
 // Configurer la modale : ouverture, fermeture et clic en dehors pour la fermer
 export function setupModal() {
@@ -27,10 +27,23 @@ export function setupModal() {
   });
 }
 
+//// Configurer les boutons de la modale pour switcher entre gallery et upload
 export function setupModalButtons(categories) {
   const modalBack = document.querySelector(".modal-back");
   const btnUpload = document.querySelector("#btn-add-photo");
 
   modalBack.addEventListener("click", switchModalGallery);
   btnUpload.addEventListener("click", () => switchModalUpload(categories));
+}
+
+// Configurer la prévisualisation de l'image uploadée
+export function setupUploadPreview() {
+  const inputFile = document.querySelector("#upload-photo");
+
+  inputFile.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      displaySelectedImage(file);
+    }
+  });
 }

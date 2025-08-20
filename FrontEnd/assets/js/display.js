@@ -129,6 +129,20 @@ export function switchModalUpload(categories) {
   });
 }
 
+// Afficher l'aperçu de l'image dans le label
+export function displaySelectedImage(file) {
+  const label = document.querySelector(".upload-photo");
+  label.replaceChildren();
+
+  // Créer l'image et lui donner l'URL du fichier sélectionné
+  const img = document.createElement("img");
+  img.classList.add("preview-img");
+  img.src = URL.createObjectURL(file);
+  img.alt = "Aperçu de l'image";
+
+  label.appendChild(img);
+}
+
 // Supprimer un projet dans le DOM
 export function removeWorkFromDOM(workId, container) {
 
