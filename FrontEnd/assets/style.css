@@ -54,12 +54,6 @@ table {
 	border-spacing: 0;
 }
 
-button {
-    all: unset;
-	display: inline-block;
-    cursor: pointer;
-	box-sizing: border-box;
-}
 /** end reset css**/
 
 html {
@@ -149,6 +143,17 @@ nav li img {
 
 li:hover {
 	font-weight: 700;
+}
+
+button {
+    all: unset;
+	display: inline-block;
+    cursor: pointer;
+	box-sizing: border-box;
+}
+
+button:focus {
+    outline: auto;
 }
 
 #introduction {
