@@ -23,7 +23,7 @@ async function init() {
       displayWorksModal(works);
       setupDeleteButtons();
       setupModal();
-      setupModalButtons();
+      setupModalButtons(categories);
     } else {
       displayGuestMode();
     }

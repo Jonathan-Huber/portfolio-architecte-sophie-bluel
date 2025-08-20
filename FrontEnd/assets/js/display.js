@@ -91,7 +91,7 @@ export function switchModalGallery() {
 }
 
 // Basculer la modale en mode "upload"
-export function switchModalUpload() {
+export function switchModalUpload(categories) {
   const modalGallery = document.querySelector(".modal-gallery");
   modalGallery.classList.add("hidden");
 
@@ -109,6 +109,24 @@ export function switchModalUpload() {
 
   const modalBack = document.querySelector(".modal-back");
   modalBack.classList.remove("hidden");
+
+  const categorySelect = document.querySelector("#category-select");
+  categorySelect.replaceChildren();
+
+  const optionEmpty = document.createElement("option");
+  optionEmpty.value = "";
+  optionEmpty.selected = true;
+  optionEmpty.hidden = true;
+
+  categorySelect.appendChild(optionEmpty);
+
+  categories.forEach(category => {
+    const optionCategory = document.createElement("option");
+    optionCategory.value = category.id;
+    optionCategory.textContent = category.name
+
+    categorySelect.appendChild(optionCategory);
+  });
 }
 
 // Supprimer un projet dans le DOM

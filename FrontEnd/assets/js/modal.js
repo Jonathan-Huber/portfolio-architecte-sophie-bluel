@@ -27,10 +27,10 @@ export function setupModal() {
   });
 }
 
-export function setupModalButtons() {
+export function setupModalButtons(categories) {
   const modalBack = document.querySelector(".modal-back");
   const btnUpload = document.querySelector("#btn-add-photo");
 
   modalBack.addEventListener("click", switchModalGallery);
-  btnUpload.addEventListener("click", switchModalUpload);
+  btnUpload.addEventListener("click", () => switchModalUpload(categories));
 }
