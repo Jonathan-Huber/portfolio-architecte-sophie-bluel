@@ -318,7 +318,7 @@ button:focus-visible {
 	cursor: pointer;
 }
 
-.btn:hover{
+.btn:hover:not(.disabled) {
 	background-color: #0E2F28;
 }
 
@@ -526,6 +526,14 @@ footer a {
 	color: #444444;
 	font-size: 10px;
 	font-weight: 400;
+}
+
+.file-error {
+	font-size: 14px;
+	font-weight: 500;
+	text-align: center;
+	margin: 20px;
+	color: #D9534F;
 }
 
 .disabled {

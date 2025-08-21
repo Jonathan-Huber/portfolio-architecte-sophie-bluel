@@ -27,7 +27,7 @@ export function setupModal() {
   });
 }
 
-//// Configurer les boutons de la modale pour switcher entre gallery et upload
+// Configurer les boutons de la modale pour switcher entre gallery et upload
 export function setupModalButtons(categories) {
   const modalBack = document.querySelector(".modal-back");
   const btnUpload = document.querySelector("#btn-add-photo");
@@ -36,15 +36,34 @@ export function setupModalButtons(categories) {
   btnUpload.addEventListener("click", () => switchModalUpload(categories));
 }
 
-// Configurer la prévisualisation de l'image uploadée
-export function setupUploadPreview() {
+// Configurer la sélection d'image avec vérification, aperçu et support clavier
+export function setupUploadFile() {
   const inputFile = document.querySelector("#upload-photo");
+  const fileErrorDiv = document.querySelector(".file-error");
+
+  const maxSize = 4 * 1024 * 1024; // 4 Mo
+  const validTypes = ["image/jpeg", "image/png"];
 
   inputFile.addEventListener("change", (event) => {
     const file = event.target.files[0];
-    if (file) {
-      displaySelectedImage(file);
+    if (!file) return;
+    
+    if (!validTypes.includes(file.type)) {
+      fileErrorDiv.textContent = "Veuillez sélectionner une image au format PNG ou JPEG.";
+      fileErrorDiv.classList.remove("hidden");
+      return;
     }
+
+    if(file.size > maxSize) {
+      fileErrorDiv.textContent = "Veuillez sélectionner une image de moins de 4 Mo.";
+      fileErrorDiv.classList.remove("hidden");
+      return
+    }
+    
+    fileErrorDiv.textContent = "";
+    fileErrorDiv.classList.add("hidden");
+
+    displaySelectedImage(file);
   });
 
   // Accessibilité clavier : ouvrir le sélecteur avec Entrée ou Espace

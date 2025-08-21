@@ -4,7 +4,7 @@ import { fetchCategories, fetchWorks } from "./api.js";
 import { displayConnectedMode, displayGuestMode } from "./auth.js";
 import { displayFilters, displayWorks, displayWorksModal } from "./display.js";
 import { setupFilter } from "./filters.js";
-import { setupModal, setupModalButtons, setupUploadPreview } from "./modal.js";
+import { setupModal, setupModalButtons, setupUploadFile } from "./modal.js";
 import { setupDeleteButtons } from "./works.js";
 
 // Initialiser la page
@@ -24,7 +24,7 @@ async function init() {
       setupDeleteButtons();
       setupModal();
       setupModalButtons(categories);
-      setupUploadPreview();
+      setupUploadFile();
     } else {
       displayGuestMode();
     }
