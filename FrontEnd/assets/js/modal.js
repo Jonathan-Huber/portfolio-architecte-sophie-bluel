@@ -1,5 +1,6 @@
 // MODAL.JS
 
+import { addWorkAPI } from "./api.js";
 import { displaySelectedImage, switchModalGallery, switchModalUpload } from "./display.js";
 
 // Configurer la modale : ouverture, fermeture et clic en dehors pour la fermer
@@ -79,7 +80,6 @@ export function setupUploadFile() {
 
 export function setupAddWorksForm() {
   const form = document.querySelector(".modal-upload-form");
-   console.log("Form trouvé ?", form);
     
   if (!form) return;
   const fileInput = document.querySelector("#upload-photo");
@@ -110,6 +110,8 @@ export function setupAddWorksForm() {
       formErrorDiv.classList.remove("hidden");
       return;
     }
-    console.log("Titre :", title, "| Catégorie :", category, "| Fichier :", file);
-  });
+    const token = localStorage.getItem("authToken");
+    const createdWork = await addWorkAPI({ title, category, file }, token);
+      console.log(createdWork);
+    });
 }
