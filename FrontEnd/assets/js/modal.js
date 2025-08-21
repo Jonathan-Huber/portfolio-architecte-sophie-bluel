@@ -40,10 +40,20 @@ export function setupModalButtons(categories) {
 export function setupUploadPreview() {
   const inputFile = document.querySelector("#upload-photo");
 
-  inputFile.addEventListener("change", (e) => {
-    const file = e.target.files[0];
+  inputFile.addEventListener("change", (event) => {
+    const file = event.target.files[0];
     if (file) {
       displaySelectedImage(file);
+    }
+  });
+
+  // Accessibilité clavier : ouvrir le sélecteur avec Entrée ou Espace
+  const uploadLabel = document.querySelector(".upload-photo");
+
+  uploadLabel.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      inputFile.click();
     }
   });
 }

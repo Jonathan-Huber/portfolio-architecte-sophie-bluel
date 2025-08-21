@@ -495,6 +495,11 @@ footer a {
 	cursor: pointer;
 }
 
+.upload-photo:focus-visible {
+  outline: 2px solid #000;
+  border-radius: 6px;
+}
+
 .upload-photo .upload-img {
 	width: 76px;
 	height: 76px;
