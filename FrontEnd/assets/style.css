@@ -528,6 +528,7 @@ footer a {
 	font-weight: 400;
 }
 
+.errorMessage,
 .form-error,
 .file-error {
 	font-size: 14px;
