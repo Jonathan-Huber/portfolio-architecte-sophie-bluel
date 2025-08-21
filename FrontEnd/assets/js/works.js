@@ -25,8 +25,6 @@ export function setupDeleteButtons() {
     } catch (error) {
       console.error("Erreur lors de la suppression :", error.message);
     }
-
-    console.log("Tu as cliqué sur le bouton delete du projet avec l'Id :", workId)
     });
   });
 }

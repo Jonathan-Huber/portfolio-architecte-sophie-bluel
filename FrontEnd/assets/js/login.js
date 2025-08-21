@@ -33,7 +33,6 @@ loginForm.addEventListener("submit", async (event) => {
 
     const data = await response.json();
 
-    console.log(data)
     localStorage.setItem("authToken", data.token);
     window.location.href = "./index.html";
 
