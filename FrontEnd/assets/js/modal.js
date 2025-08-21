@@ -76,3 +76,40 @@ export function setupUploadFile() {
     }
   });
 }
+
+export function setupAddWorksForm() {
+  const form = document.querySelector(".modal-upload-form");
+   console.log("Form trouvé ?", form);
+    
+  if (!form) return;
+  const fileInput = document.querySelector("#upload-photo");
+  const titleInput = document.querySelector("#title");
+  const categorySelect = document.querySelector("#category-select");
+  const formErrorDiv = document.querySelector(".form-error");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    formErrorDiv.replaceChildren();
+
+    const title = titleInput.value.trim();
+    const category = categorySelect.value;
+    const file = fileInput.files[0];
+
+    let errors = [];
+
+    if (!title) errors.push("Veuillez saisir un titre.");
+    if (!category) errors.push("Veuillez sélectionner une catégorie.");
+    if (!file) errors.push("Veuillez sélectionner une image.");
+
+    if (errors.length > 0) {
+      errors.forEach(message => {
+        const p = document.createElement("p");
+        p.textContent = message;
+        formErrorDiv.appendChild(p);
+      });
+      formErrorDiv.classList.remove("hidden");
+      return;
+    }
+    console.log("Titre :", title, "| Catégorie :", category, "| Fichier :", file);
+  });
+}

@@ -4,7 +4,7 @@ import { fetchCategories, fetchWorks } from "./api.js";
 import { displayConnectedMode, displayGuestMode } from "./auth.js";
 import { displayFilters, displayWorks, displayWorksModal } from "./display.js";
 import { setupFilter } from "./filters.js";
-import { setupModal, setupModalButtons, setupUploadFile } from "./modal.js";
+import { setupAddWorksForm, setupModal, setupModalButtons, setupUploadFile } from "./modal.js";
 import { setupDeleteButtons } from "./works.js";
 
 // Initialiser la page
@@ -25,6 +25,7 @@ async function init() {
       setupModal();
       setupModalButtons(categories);
       setupUploadFile();
+      setupAddWorksForm();
     } else {
       displayGuestMode();
     }
