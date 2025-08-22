@@ -131,22 +131,20 @@ export function switchModalUpload(categories) {
 
 // Afficher l'aperçu de l'image dans le label
 export function displaySelectedImage(file) {
-  const label = document.querySelector(".upload-photo");
-  label.replaceChildren();
-
-  // Créer l'image et lui donner l'URL du fichier sélectionné
-  const img = document.createElement("img");
-  img.classList.add("preview-img");
-  img.src = URL.createObjectURL(file);
-  img.alt = "Aperçu de l'image";
-
-  label.appendChild(img);
+  const divUploadInfo = document.querySelector(".upload-info")
+  const previewImg = document.querySelector(".preview-img")
+  divUploadInfo.classList.add("hidden");
+  previewImg.classList.remove("hidden");
+  previewImg.src = URL.createObjectURL(file);
 }
 
 // Supprimer l'aperçu de l'image sélectionnée
 export function clearPreview() {
-  const label = document.querySelector(".upload-photo");
-  label.replaceChildren(); // supprime l'image
+  const divUploadInfo = document.querySelector(".upload-info")
+  const previewImg = document.querySelector(".preview-img")
+  previewImg.src = "";
+  previewImg.classList.add("hidden");
+  divUploadInfo.classList.remove("hidden");
 }
 
 // Supprimer un projet dans le DOM

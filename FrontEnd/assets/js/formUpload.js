@@ -57,7 +57,7 @@ function updateSubmitButton() {
   }
 }
 
-// Gèrer la soumission du formulaire, envoie à l’API puis réinitialiser.
+// Valider le formulaire, envoyer à l'API et mettre à jour le DOM
 async function handleFormSubmit(e) {
   e.preventDefault();
   formErrorDiv.replaceChildren();
@@ -101,8 +101,17 @@ async function handleFormSubmit(e) {
   closeModal();
 }
 
+// Configurer les écouteurs du formulaire pour gérer l'aperçu, la validation et la soumission
 export function setupFormListeners() {
   fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+
+    if (file) {
+        displaySelectedImage(file);
+    } else {
+        clearPreview();
+    }
+
     isFileValid();
     updateSubmitButton();
   });

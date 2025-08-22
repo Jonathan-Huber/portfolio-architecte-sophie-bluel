@@ -98,10 +98,14 @@
       
       <div class="modal-upload form-section hidden">
         <form action="#" id="modal-upload-form" class="modal-upload-form" method="post">
+          
           <label for="upload-photo" class="upload-photo" tabindex="0">
+            <div class="upload-info">
             <img class="upload-img" src="./assets/icons/picture.svg">
             <span class="upload-btn">+ Ajouter photo</span>
             <p>jpg, png : 4mo max</p>
+            </div>
+            <img class="preview-img hidden" src="" alt="Aperçu de l'image">
           </label>
           <input type="file" id="upload-photo" name="image" accept="image/*" class="visually-hidden">
           <div class="file-error hidden" aria-live="polite"></div>

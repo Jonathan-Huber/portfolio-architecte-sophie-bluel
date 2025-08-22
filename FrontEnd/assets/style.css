@@ -480,7 +480,8 @@ footer a {
 	width: 100%;
 }
 
-.modal-upload .upload-photo {
+.modal-upload .upload-photo,
+.modal-upload .upload-info {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
