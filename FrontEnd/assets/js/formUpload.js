@@ -1,7 +1,7 @@
 // FORMUPLOAD.JS
 
 import { addWorkAPI } from "./api.js";
-import { clearPreview, displaySelectedImage, switchModalGallery } from "./display.js";
+import { addWorkToGallery, addWorkToModal, clearPreview, displaySelectedImage, switchModalGallery } from "./display.js";
 import { closeModal } from "./modal.js";
 import { setupDeleteButtons } from "./works.js";
 
@@ -87,16 +87,18 @@ async function handleFormSubmit(e) {
   }
 
   const token = localStorage.getItem("authToken");
-  await addWorkAPI({ title, category, file }, token);
+  const createdWork = await addWorkAPI({ title, category, file }, token);
+  
+  addWorkToGallery(createdWork);
+  addWorkToModal(createdWork);
 
   form.reset();
   clearPreview();
   updateSubmitButton();
-  switchModalGallery()
-  closeModal();
+  setupDeleteButtons();
 
-  setupDeleteButtons()
-  
+  switchModalGallery();
+  closeModal();
 }
 
 export function setupFormListeners() {

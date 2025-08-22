@@ -155,3 +155,46 @@ export function removeWorkFromDOM(workId, container) {
 const figure = container.querySelector(`figure[data-id='${workId}']`);
   if (figure) figure.remove();
 }
+
+// Ajouter un projet dans la galerie principale
+export function addWorkToGallery(work) {
+  const gallery = document.querySelector(".gallery");
+
+  const figure = document.createElement("figure");
+  figure.dataset.id = work.id;
+
+  const img = document.createElement("img");
+  img.src = work.imageUrl;
+  img.alt = work.title;
+
+  const figcaption = document.createElement("figcaption");
+  figcaption.textContent = work.title;
+
+  figure.appendChild(img);
+  figure.appendChild(figcaption);
+  gallery.appendChild(figure);
+}
+
+// Ajouter un projet dans la modale
+export function addWorkToModal(work) {
+  const modalGallery = document.querySelector(".modal-gallery");
+
+  const figure = document.createElement("figure");
+  figure.dataset.id = work.id;
+
+  const img = document.createElement("img");
+  img.src = work.imageUrl;
+  img.alt = work.title;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("modal-deleteBtn");
+  deleteBtn.type = "button";
+
+  const icon = document.createElement("i");
+  icon.classList.add("fa-solid", "fa-trash-can");
+
+  deleteBtn.appendChild(icon);
+  figure.appendChild(img);
+  figure.appendChild(deleteBtn);
+  modalGallery.appendChild(figure);
+}
