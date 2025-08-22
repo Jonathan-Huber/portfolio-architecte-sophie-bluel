@@ -143,6 +143,12 @@ export function displaySelectedImage(file) {
   label.appendChild(img);
 }
 
+// Supprimer l'aperçu de l'image sélectionnée
+export function clearPreview() {
+  const label = document.querySelector(".upload-photo");
+  label.replaceChildren(); // supprime l'image
+}
+
 // Supprimer un projet dans le DOM
 export function removeWorkFromDOM(workId, container) {
 

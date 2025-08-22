@@ -27,6 +27,15 @@ export function setupModal() {
   });
 }
 
+// fermer la modal
+export function closeModal() {
+  const modal = document.querySelector(".modal");
+  const btnEdit = document.querySelector("#btn-edit");
+  btnEdit.focus();
+  modal.classList.add("hidden");
+  modal.setAttribute("aria-hidden", "true");
+}
+
 // Configurer les boutons de la modale pour switcher entre gallery et upload
 export function setupModalButtons(categories) {
   const modalBack = document.querySelector(".modal-back");

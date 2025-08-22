@@ -1,7 +1,9 @@
 // FORMUPLOAD.JS
 
 import { addWorkAPI } from "./api.js";
-import { displaySelectedImage } from "./display.js";
+import { clearPreview, displaySelectedImage, switchModalGallery } from "./display.js";
+import { closeModal } from "./modal.js";
+import { setupDeleteButtons } from "./works.js";
 
 // Sélecteurs globaux
 const fileInput = document.querySelector("#upload-photo");
@@ -88,6 +90,13 @@ async function handleFormSubmit(e) {
   await addWorkAPI({ title, category, file }, token);
 
   form.reset();
+  clearPreview();
+  updateSubmitButton();
+  switchModalGallery()
+  closeModal();
+
+  setupDeleteButtons()
+  
 }
 
 export function setupFormListeners() {
