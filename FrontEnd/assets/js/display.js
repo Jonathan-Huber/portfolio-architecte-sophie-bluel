@@ -98,44 +98,26 @@ export function displayWorksModal(works) {
 
 // Basculer la modale en mode "gallery"
 export function switchModalGallery() {
-  const modalGallery = document.querySelector(".modal-gallery");
-  modalGallery.classList.remove("hidden");
+  document.querySelector(".modal-gallery").classList.remove("hidden");
+  document.querySelector(".modal-upload").classList.add("hidden");
 
-  const modalUpload = document.querySelector(".modal-upload");
-  modalUpload.classList.add("hidden");
+  document.querySelector("#modal-title").textContent = "Galerie photo";
 
-  const modalTitle = document.querySelector("#modal-title");
-  modalTitle.textContent = "Galerie photo";
-
-  const btnAddPhoto = document.querySelector("#btn-add-photo");
-  btnAddPhoto.classList.remove("hidden");
-
-  const btnValidate = document.querySelector("#btn-validate");
-  btnValidate.classList.add("hidden");
-
-  const modalBack = document.querySelector(".modal-back");
-  modalBack.classList.add("hidden");
+  document.querySelector("#btn-add-photo").classList.remove("hidden");
+  document.querySelector("#btn-validate").classList.add("hidden");
+  document.querySelector(".modal-back").classList.add("hidden");
 }
 
 // Basculer la modale en mode "upload"
 export function switchModalUpload(categories) {
-  const modalGallery = document.querySelector(".modal-gallery");
-  modalGallery.classList.add("hidden");
+  document.querySelector(".modal-gallery").classList.add("hidden");
+  document.querySelector(".modal-upload").classList.remove("hidden");
 
-  const modalUpload = document.querySelector(".modal-upload");
-  modalUpload.classList.remove("hidden");
+  document.querySelector("#modal-title").textContent = "Ajout photo";
 
-  const modalTitle = document.querySelector("#modal-title");
-  modalTitle.textContent = "Ajout photo";
-
-  const btnAddPhoto = document.querySelector("#btn-add-photo");
-  btnAddPhoto.classList.add("hidden");
-
-  const btnValidate = document.querySelector("#btn-validate");
-  btnValidate.classList.remove("hidden");
-
-  const modalBack = document.querySelector(".modal-back");
-  modalBack.classList.remove("hidden");
+  document.querySelector("#btn-add-photo").classList.add("hidden");
+  document.querySelector("#btn-validate").classList.remove("hidden");
+  document.querySelector(".modal-back").classList.remove("hidden");
 
   const categorySelect = document.querySelector("#category-select");
   categorySelect.replaceChildren();
