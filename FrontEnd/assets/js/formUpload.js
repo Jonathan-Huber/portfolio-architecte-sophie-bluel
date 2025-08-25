@@ -20,14 +20,7 @@ function isFileValid() {
   const file = fileInput.files[0];
   if (!file) return false;
 
-  const validTypes = ["image/jpeg", "image/png"];
   const maxSize = 4 * 1024 * 1024;
-
-  if (!validTypes.includes(file.type)) {
-    fileErrorDiv.textContent = "Format non valide (JPG ou PNG uniquement).";
-    fileErrorDiv.classList.remove("hidden");
-    return false;
-  }
 
   if (file.size > maxSize) {
     fileErrorDiv.textContent = "Image trop lourde (max 4 Mo).";
