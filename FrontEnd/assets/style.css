@@ -318,7 +318,7 @@ button:focus-visible {
 	cursor: pointer;
 }
 
-.btn:hover:not(.disabled) {
+.btn:hover:not(:disabled) {
 	background-color: #0E2F28;
 }
 
@@ -539,8 +539,9 @@ footer a {
 	color: #D9534F;
 }
 
-.disabled {
+button:disabled {
 	background-color: #A7A7A7;
+	cursor: not-allowed;
 }
 
 /* Input masqué mais accessible */

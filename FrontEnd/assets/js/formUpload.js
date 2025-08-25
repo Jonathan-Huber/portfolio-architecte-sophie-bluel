@@ -27,7 +27,6 @@ function isFileValid() {
   return true;
 }
 
-
 function handleFilePreview() {
   const file = fileInput.files[0];
   if (!file) {
@@ -57,9 +56,9 @@ function areFieldsComplete() {
 function updateSubmitButton() {
   const ok = areFieldsComplete() && isFileValid();
   if (!ok) {
-    submitButton.classList.add("disabled");
+    submitButton.disabled = true;
   } else {
-    submitButton.classList.remove("disabled");
+    submitButton.disabled = false;
   }
 }
 
