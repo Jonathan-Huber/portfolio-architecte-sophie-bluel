@@ -11,8 +11,6 @@ const titleInput = document.querySelector("#title");
 const categorySelect = document.querySelector("#category-select");
 const submitButton = document.querySelector("#btn-validate");
 const form = document.querySelector(".modal-upload-form");
-const formErrorDiv = document.querySelector(".form-error");
-const fileErrorDiv = document.querySelector(".file-error");
 
 // Vérifier la validité du fichier dans #upload-photo
 function isFileValid() {
@@ -65,31 +63,10 @@ function updateSubmitButton() {
 // Valider le formulaire, envoyer à l'API et mettre à jour le DOM
 async function handleFormSubmit(e) {
   e.preventDefault();
-  formErrorDiv.replaceChildren();
 
   const title = titleInput.value.trim();
   const category = categorySelect.value;
   const file = fileInput.files[0];
-
-  let errors = [];
-
-  if (!title) errors.push("Veuillez saisir un titre.");
-  if (!category) errors.push("Veuillez sélectionner une catégorie.");
-  if (!file) {
-    errors.push("Veuillez sélectionner une image.");
-  } else if (!isFileValid()) {
-    errors.push("L’image doit être JPG/PNG et < 4 Mo.");
-  }
-
-  if (errors.length > 0) {
-    errors.forEach(message => {
-      const p = document.createElement("p");
-      p.textContent = message;
-      formErrorDiv.appendChild(p);
-    });
-    formErrorDiv.classList.remove("hidden");
-    return;
-  }
 
   const token = localStorage.getItem("authToken");
   const createdWork = await addWorkAPI({ title, category, file }, token);
