@@ -1,7 +1,7 @@
 // FORMUPLOAD.JS
 
 import { addWorkAPI } from "./api.js";
-import { addWorkToGallery, addWorkToModal, clearPreview, displaySelectedImage, switchModalGallery } from "./display.js";
+import { addWorkToGallery, addWorkToModal, clearPreview, displayFileError, displaySelectedImage, hideFileError, switchModalGallery } from "./display.js";
 import { closeModal } from "./modal.js";
 import { setupDeleteButtons } from "./works.js";
 
@@ -16,21 +16,34 @@ const fileErrorDiv = document.querySelector(".file-error");
 
 // Vérifier la validité du fichier dans #upload-photo
 function isFileValid() {
-  fileErrorDiv.replaceChildren();
   const file = fileInput.files[0];
   if (!file) return false;
 
   const maxSize = 4 * 1024 * 1024;
 
   if (file.size > maxSize) {
-    fileErrorDiv.textContent = "Image trop lourde (max 4 Mo).";
-    fileErrorDiv.classList.remove("hidden");
     return false;
+  } else
+  return true;
+}
+
+
+function handleFilePreview() {
+  const file = fileInput.files[0];
+  if (!file) {
+    clearPreview();
+    hideFileError();
+    return;
   }
 
-  fileErrorDiv.classList.add("hidden");
+  if (!isFileValid()) {
+    clearPreview();
+    displayFileError();
+    return;
+  }
+
   displaySelectedImage(file);
-  return true;
+  hideFileError();
 }
 
 // Vérifier que tous les champs sont remplis
@@ -97,15 +110,7 @@ async function handleFormSubmit(e) {
 // Configurer les écouteurs du formulaire pour gérer l'aperçu, la validation et la soumission
 export function setupFormListeners() {
   fileInput.addEventListener("change", () => {
-    const file = fileInput.files[0];
-
-    if (file) {
-        displaySelectedImage(file);
-    } else {
-        clearPreview();
-    }
-
-    isFileValid();
+    handleFilePreview();
     updateSubmitButton();
   });
 

@@ -129,10 +129,15 @@ export function switchModalUpload(categories) {
   });
 }
 
+//-------------------
+// Display FormUpload
+//-------------------
+
 // Afficher l'aperçu de l'image dans le label
 export function displaySelectedImage(file) {
   const divUploadInfo = document.querySelector(".upload-info")
   const previewImg = document.querySelector(".preview-img")
+
   divUploadInfo.classList.add("hidden");
   previewImg.classList.remove("hidden");
   previewImg.src = URL.createObjectURL(file);
@@ -142,9 +147,24 @@ export function displaySelectedImage(file) {
 export function clearPreview() {
   const divUploadInfo = document.querySelector(".upload-info")
   const previewImg = document.querySelector(".preview-img")
+
   previewImg.src = "";
   previewImg.classList.add("hidden");
   divUploadInfo.classList.remove("hidden");
+}
+
+// Afficher le message d'erreur du fichier
+export function displayFileError() {
+  const fileErrorDiv = document.querySelector(".file-error");
+  fileErrorDiv.textContent = "Image trop lourde (max 4 Mo).";
+  fileErrorDiv.classList.remove("hidden");
+}
+
+// Masquer le message d'erreur du fichier
+export function hideFileError() {
+  const fileErrorDiv = document.querySelector(".file-error");
+  fileErrorDiv.textContent = "";
+  fileErrorDiv.classList.add("hidden");
 }
 
 // Supprimer un projet dans le DOM
