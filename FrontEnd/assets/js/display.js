@@ -1,10 +1,12 @@
 // DISPLAY.JS
+// Gestion de l'affichage : galerie principale, modale (gallery et upload), messages d'erreur, preview et suppression de projets
 
-//==============
-// Display Index
-//==============
+//================
+// Display : Index
+//================
+// Fonctions pour afficher les filtres, la galerie principale, ajouter un projet et les messages d'erreur
 
-// Afficher les filtres au dessus de la gallery principale
+// Afficher les filtres au dessus de la galerie principale
 export function displayFilters(categories) {
   const filtersContainer = document.querySelector(".filters-container");
   filtersContainer.replaceChildren();
@@ -24,7 +26,7 @@ export function displayFilters(categories) {
   });
 }
 
-// Afficher les projets dans la gallery principale
+// Afficher les projets dans la galerie principale
 export function displayWorks(works) {
   const gallery = document.querySelector(".gallery");
   gallery.replaceChildren();
@@ -83,9 +85,10 @@ export function addWorkToGallery(work) {
   gallery.appendChild(figure);
 }
 
-//===============
-// Display modale
-//===============
+//===========================
+// Display : Modale - Galerie
+//===========================
+// Fonctions pour afficher la galerie dans la modale, basculer en mode galerie depuis upload et gérer les erreurs associées
 
 // Afficher les projets dans la modale
 export function displayWorksModal(works) {
@@ -122,7 +125,7 @@ export function displayWorksModal(works) {
   });
 }
 
-// Basculer la modale en mode "gallery"
+// Basculer la modale en mode "galerie"
 export function switchModalGallery() {
   document.querySelector(".modal-gallery-container").classList.remove("hidden");
   document.querySelector(".modal-upload-container").classList.add("hidden");
@@ -134,7 +137,50 @@ export function switchModalGallery() {
   document.querySelector(".modal-back").classList.add("hidden");
 }
 
-// Basculer la modale en mode "upload"
+// Ajouter un projet dans la modale
+export function addWorkToModal(work) {
+  const modalGallery = document.querySelector(".modal-gallery");
+
+  const figure = document.createElement("figure");
+  figure.dataset.id = work.id;
+
+  const img = document.createElement("img");
+  img.src = work.imageUrl;
+  img.alt = work.title;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("modal-deleteBtn");
+  deleteBtn.type = "button";
+
+  const icon = document.createElement("i");
+  icon.classList.add("fa-solid", "fa-trash-can");
+
+  deleteBtn.appendChild(icon);
+  figure.appendChild(img);
+  figure.appendChild(deleteBtn);
+  modalGallery.appendChild(figure);
+}
+
+// Afficher un message d'erreur dans la modale galerie
+export function showGalleryError(message) {
+  const galleryErrorDiv = document.querySelector(".modal-gallery-error");
+  galleryErrorDiv.textContent = message;
+  galleryErrorDiv.classList.remove("hidden");
+}
+
+// Masquer le message d'erreur de la modale galerie
+export function hideGalleryError() {
+  const galleryErrorDiv = document.querySelector(".modal-gallery-error");
+  galleryErrorDiv.textContent = "";
+  galleryErrorDiv.classList.add("hidden");
+}
+
+//==========================
+// Display : Modale - Upload
+//==========================
+//Fonctions pour basculer en mode upload depuis galerie, afficher ou non l'aperçu de l'image et gérer les erreurs du formulaire
+
+// Basculer la modale en mode "formulaire d'upload"
 export function switchModalUpload(categories) {
   document.querySelector(".modal-gallery-container").classList.add("hidden");
   document.querySelector(".modal-upload-container").classList.remove("hidden");
@@ -171,46 +217,6 @@ export function switchModalUpload(categories) {
   });
 }
 
-// Ajouter un projet dans la modale
-export function addWorkToModal(work) {
-  const modalGallery = document.querySelector(".modal-gallery");
-
-  const figure = document.createElement("figure");
-  figure.dataset.id = work.id;
-
-  const img = document.createElement("img");
-  img.src = work.imageUrl;
-  img.alt = work.title;
-
-  const deleteBtn = document.createElement("button");
-  deleteBtn.classList.add("modal-deleteBtn");
-  deleteBtn.type = "button";
-
-  const icon = document.createElement("i");
-  icon.classList.add("fa-solid", "fa-trash-can");
-
-  deleteBtn.appendChild(icon);
-  figure.appendChild(img);
-  figure.appendChild(deleteBtn);
-  modalGallery.appendChild(figure);
-}
-
-export function showGalleryError(message) {
-  const galleryErrorDiv = document.querySelector(".modal-gallery-error");
-  galleryErrorDiv.textContent = message;
-  galleryErrorDiv.classList.remove("hidden");
-}
-
-export function hideGalleryError() {
-  const galleryErrorDiv = document.querySelector(".modal-gallery-error");
-  galleryErrorDiv.textContent = "";
-  galleryErrorDiv.classList.add("hidden");
-}
-
-//===================
-// Display FormUpload
-//===================
-
 // Afficher l'aperçu de l'image dans le label
 export function displaySelectedImage(file) {
   const divUploadInfo = document.querySelector(".upload-info")
@@ -245,21 +251,23 @@ export function hideFileError() {
   fileErrorDiv.classList.add("hidden");
 }
 
+// Afficher un message d'erreur pour l'upload
 export function showUploadError(message) {
   const uploadErrorDiv = document.querySelector(".modal-upload-error");
   uploadErrorDiv.textContent = message;
   uploadErrorDiv.classList.remove("hidden");
 }
 
+// Masquer le message d'erreur pour l'upload
 export function hideUploadError() {
   const uploadErrorDiv = document.querySelector(".modal-upload-error");
   uploadErrorDiv.textContent = "";
   uploadErrorDiv.classList.add("hidden");
 }
 
-//======================
-// Display Index & Modal
-//======================
+//========================
+// Display : Index & Modal
+//========================
 
 // Supprimer un projet dans le DOM & modal
 export function removeWorkFromDOM(workId, container) {
