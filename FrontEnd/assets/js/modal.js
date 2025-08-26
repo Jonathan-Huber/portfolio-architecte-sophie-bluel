@@ -11,6 +11,8 @@ export function setupModal() {
   btnEdit.addEventListener("click", () => {
     modal.classList.remove("hidden");
     modal.setAttribute("aria-hidden", "false");
+    // focus sur le bouton de fermeture de la modale.
+    modal.querySelector(".modal-close").focus();
   });
 
   modalClose.addEventListener("click", closeModal);
@@ -26,6 +28,7 @@ export function setupModal() {
 export function closeModal() {
   const modal = document.querySelector(".modal");
   const btnEdit = document.querySelector("#btn-edit");
+  // focus sur le bouton d'ouverture' de la modale.
   btnEdit.focus();
   modal.classList.add("hidden");
   modal.setAttribute("aria-hidden", "true");
@@ -39,6 +42,15 @@ export function setupModalButtons(categories) {
   const modalBack = document.querySelector(".modal-back");
   const btnUpload = document.querySelector("#btn-add-photo");
 
-  modalBack.addEventListener("click", switchModalGallery);
-  btnUpload.addEventListener("click", () => switchModalUpload(categories));
+  modalBack.addEventListener("click", () => {
+    switchModalGallery();
+    // focus sur le bouton de fermeture de la modale.
+    document.querySelector(".modal-close").focus();
+  });
+
+  btnUpload.addEventListener("click", () => {
+    switchModalUpload(categories);
+    // focus sur le premier input du formulaire
+    document.querySelector(".upload-photo").focus();
+  });
 }
