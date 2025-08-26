@@ -1,7 +1,7 @@
 // FORMUPLOAD.JS
 
 import { addWorkAPI } from "./api.js";
-import { addWorkToGallery, addWorkToModal, clearPreview, displayFileError, displaySelectedImage, hideFileError, switchModalGallery } from "./display.js";
+import { addWorkToGallery, addWorkToModal, clearPreview, displayFileError, displaySelectedImage, hideFileError, hideUploadError, showUploadError, switchModalGallery } from "./display.js";
 import { closeModal } from "./modal.js";
 import { setupDeleteButtons } from "./works.js";
 
@@ -67,20 +67,28 @@ async function handleFormSubmit(e) {
   const title = titleInput.value.trim();
   const category = categorySelect.value;
   const file = fileInput.files[0];
-
   const token = localStorage.getItem("authToken");
-  const createdWork = await addWorkAPI({ title, category, file }, token);
-  
-  addWorkToGallery(createdWork);
-  addWorkToModal(createdWork);
 
-  form.reset();
-  clearPreview();
-  updateSubmitButton();
-  setupDeleteButtons();
+  try {
+    //throw new Error("Test d'erreur");
+    const createdWork = await addWorkAPI({ title, category, file }, token);
+    
+    addWorkToGallery(createdWork);
+    addWorkToModal(createdWork);
 
-  switchModalGallery();
-  closeModal();
+    form.reset();         // vider des champs  du formulaire
+    clearPreview();       // vider  la preview de l'input files
+    hideFileError();      // vider la div des messages d'erreur file
+    updateSubmitButton(); // 
+    setupDeleteButtons();
+
+    switchModalGallery();
+    closeModal();
+
+  } catch (error) {
+      console.error("Erreur lors de l'ajout :", error.message);
+      showUploadError("Échec de l’ajout du projet. Vérifiez votre connexion ou réessayez plus tard.");
+  }
 }
 
 // Configurer les écouteurs du formulaire pour gérer l'aperçu, la validation et la soumission

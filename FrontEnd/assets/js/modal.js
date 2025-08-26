@@ -1,6 +1,6 @@
 // MODAL.JS
 
-import { switchModalGallery, switchModalUpload } from "./display.js";
+import { hideGalleryError, hideUploadError, switchModalGallery, switchModalUpload } from "./display.js";
 
 // Configurer la modale : ouverture, fermeture et clic en dehors pour la fermer
 export function setupModal() {
@@ -13,16 +13,11 @@ export function setupModal() {
     modal.setAttribute("aria-hidden", "false");
   });
 
-  modalClose.addEventListener("click", () => {
-    btnEdit.focus();
-    modal.classList.add("hidden");
-    modal.setAttribute("aria-hidden", "true");
-  });
+  modalClose.addEventListener("click", closeModal);
 
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
-      modal.classList.add("hidden");
-      modal.setAttribute("aria-hidden", "true");
+      closeModal();
     }
   });
 }
@@ -34,6 +29,9 @@ export function closeModal() {
   btnEdit.focus();
   modal.classList.add("hidden");
   modal.setAttribute("aria-hidden", "true");
+
+  hideGalleryError();
+  hideUploadError();
 }
 
 // Configurer les boutons de la modale pour switcher entre gallery et upload

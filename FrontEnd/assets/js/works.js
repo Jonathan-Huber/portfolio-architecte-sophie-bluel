@@ -1,7 +1,7 @@
 // WORKS.JS
 
 import { deleteWorkAPI } from "./api.js";
-import { removeWorkFromDOM } from "./display.js";
+import { removeWorkFromDOM, showGalleryError,} from "./display.js";
 
 // Activer les boutons de suppression lors du click
 export function setupDeleteButtons() {
@@ -13,6 +13,7 @@ export function setupDeleteButtons() {
     const workId = button.closest("figure").dataset.id;
 
     try {
+      //throw new Error("Test d'erreur");
       // Supprimer le works de l'API
       await deleteWorkAPI(workId, token);
 
@@ -24,6 +25,7 @@ export function setupDeleteButtons() {
 
     } catch (error) {
       console.error("Erreur lors de la suppression :", error.message);
+      showGalleryError("Échec de la suppression du projet. Vérifiez votre connexion ou réessayez plus tard.");
     }
     });
   });

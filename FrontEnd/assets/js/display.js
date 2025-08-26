@@ -46,6 +46,24 @@ export function displayWorks(works) {
   });
 }
 
+// Afficher un message d'erreur global pour la page principale (index)
+export function showIndexError(message) {
+  const errorDiv = document.querySelector(".index-error");
+  if (errorDiv) {
+    errorDiv.textContent = message;
+    errorDiv.classList.remove("hidden");
+  }
+}
+
+// Masquer un message d'erreur global pour la page principale (index)
+export function hideIndexError() {
+  const errorDiv = document.querySelector(".index-error");
+  if (errorDiv) {
+    errorDiv.textContent = "";
+    errorDiv.classList.add("hidden");
+  }
+}
+
 // Ajouter un projet dans la galerie principale
 export function addWorkToGallery(work) {
   const gallery = document.querySelector(".gallery");
@@ -72,7 +90,15 @@ export function addWorkToGallery(work) {
 // Afficher les projets dans la modale
 export function displayWorksModal(works) {
   const modalGallery = document.querySelector(".modal-gallery");
+  const galleryErrorDiv = document.querySelector(".modal-gallery-error");
+
   modalGallery.replaceChildren();
+
+  if (works.length === 0) {
+    galleryErrorDiv.textContent = "Impossible de charger les projets. Réessayez plus tard.";
+    galleryErrorDiv.classList.remove("hidden");
+    return;
+  }
 
   works.forEach(work => {
     const figure = document.createElement("figure");
@@ -98,8 +124,8 @@ export function displayWorksModal(works) {
 
 // Basculer la modale en mode "gallery"
 export function switchModalGallery() {
-  document.querySelector(".modal-gallery").classList.remove("hidden");
-  document.querySelector(".modal-upload").classList.add("hidden");
+  document.querySelector(".modal-gallery-container").classList.remove("hidden");
+  document.querySelector(".modal-upload-container").classList.add("hidden");
 
   document.querySelector("#modal-title").textContent = "Galerie photo";
 
@@ -110,14 +136,21 @@ export function switchModalGallery() {
 
 // Basculer la modale en mode "upload"
 export function switchModalUpload(categories) {
-  document.querySelector(".modal-gallery").classList.add("hidden");
-  document.querySelector(".modal-upload").classList.remove("hidden");
+  document.querySelector(".modal-gallery-container").classList.add("hidden");
+  document.querySelector(".modal-upload-container").classList.remove("hidden");
 
   document.querySelector("#modal-title").textContent = "Ajout photo";
 
   document.querySelector("#btn-add-photo").classList.add("hidden");
   document.querySelector("#btn-validate").classList.remove("hidden");
   document.querySelector(".modal-back").classList.remove("hidden");
+
+  if (categories.length === 0) {
+    const uploadErrorDiv = document.querySelector(".modal-upload-error");
+    uploadErrorDiv.textContent = "Impossible de charger les catégories. Réessayez plus tard.";
+    uploadErrorDiv.classList.remove("hidden");
+    return;
+  }
 
   const categorySelect = document.querySelector("#category-select");
   categorySelect.replaceChildren();
@@ -162,6 +195,18 @@ export function addWorkToModal(work) {
   modalGallery.appendChild(figure);
 }
 
+export function showGalleryError(message) {
+  const galleryErrorDiv = document.querySelector(".modal-gallery-error");
+  galleryErrorDiv.textContent = message;
+  galleryErrorDiv.classList.remove("hidden");
+}
+
+export function hideGalleryError() {
+  const galleryErrorDiv = document.querySelector(".modal-gallery-error");
+  galleryErrorDiv.textContent = "";
+  galleryErrorDiv.classList.add("hidden");
+}
+
 //===================
 // Display FormUpload
 //===================
@@ -198,6 +243,18 @@ export function hideFileError() {
   const fileErrorDiv = document.querySelector(".file-error");
   fileErrorDiv.textContent = "";
   fileErrorDiv.classList.add("hidden");
+}
+
+export function showUploadError(message) {
+  const uploadErrorDiv = document.querySelector(".modal-upload-error");
+  uploadErrorDiv.textContent = message;
+  uploadErrorDiv.classList.remove("hidden");
+}
+
+export function hideUploadError() {
+  const uploadErrorDiv = document.querySelector(".modal-upload-error");
+  uploadErrorDiv.textContent = "";
+  uploadErrorDiv.classList.add("hidden");
 }
 
 //======================

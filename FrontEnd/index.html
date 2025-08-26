@@ -55,6 +55,7 @@
             </button>
           </div>
         <div class="filters-container"></div>
+        <div class="index-error error hidden" aria-live="polite"></div>
         <div class="gallery"></div>
       </section>
       <section id="contact" class="form-section">
@@ -94,26 +95,31 @@
         <img src="./assets/icons/arrow-left.svg" alt="Retour">
         </button>
       <h3 id="modal-title">Galerie photo</h3>
-      <div class="modal-gallery"></div>
-      
-      <div class="modal-upload form-section hidden">
-        <form action="#" id="modal-upload-form" class="modal-upload-form" method="post">
-          
-          <label for="upload-photo" class="upload-photo" tabindex="0">
-            <div class="upload-info">
-            <img class="upload-img" src="./assets/icons/picture.svg">
-            <span class="upload-btn">+ Ajouter photo</span>
-            <p>jpg, png : 4mo max</p>
-            </div>
-            <img class="preview-img hidden" src="" alt="Aperçu de l'image">
-          </label>
-          <input type="file" id="upload-photo" name="image" accept="image/png, image/jpeg" class="visually-hidden">
-          <div class="file-error hidden" aria-live="polite"></div>
-          <label for="title">Titre</label>
-          <input type="text" name="title" id="title">
-          <label for="category-select">Catégorie</label>
-          <select name="category" id="category-select"></select>
-        </form>
+      <div class="modal-gallery-container ">
+        <div class="modal-gallery"></div>
+        <div class="modal-gallery-error error hidden"></div>
+      </div>
+
+      <div class="modal-upload-container hidden">
+        <div class="modal-upload form-section">
+          <form action="#" id="modal-upload-form" class="modal-upload-form" method="post">
+            <label for="upload-photo" class="upload-photo" tabindex="0">
+              <span class="upload-info">
+              <img class="upload-img" src="./assets/icons/picture.svg" alt="">
+              <span class="upload-btn">+ Ajouter photo</span>
+              <span class="upload-info-text">jpg, png : 4mo max</span>
+              </span>
+              <img class="preview-img hidden" src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBA==" alt="Aperçu de l'image">
+            </label>
+            <input type="file" id="upload-photo" name="image" accept="image/png, image/jpeg" class="visually-hidden">
+            <div class="file-error error hidden" aria-live="polite"></div>
+            <label for="title">Titre</label>
+            <input type="text" name="title" id="title">
+            <label for="category-select">Catégorie</label>
+            <select name="category" id="category-select"></select>
+          </form>
+        </div>
+        <div class="modal-upload-error error hidden"></div>
       </div>
       <hr class="modal-separator">
       <button id="btn-add-photo" class="btn">Ajouter une photo</button>
@@ -125,6 +131,7 @@
         disabled>
         Valider
       </button>
+      
     </div>
   </aside>
 </body>
