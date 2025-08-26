@@ -10,13 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <meta name="description" content="">
+  <meta name="description" content="Portfolio de Sophie Bluel, architecte d'intérieur spécialisée dans la conception et l'aménagement d'espaces.">
   <link rel="stylesheet" href="./assets/style.css">
-  <script type="module" src="./assets/js/main.js" defer></script>
+  <script type="module" src="./assets/js/main.js"></script>
 </head>
 
 <body>
-  <div id="edit-banner" class="hidden"><i class="fa-solid fa-pen-to-square" class="hidden"></i> Mode édition</div>
+  <div id="edit-banner" class="hidden"><i class="fa-solid fa-pen-to-square"></i> Mode édition</div>
   <div class = "container">
 
     <header>
@@ -80,7 +80,7 @@
       </ul>
     </nav>
   </footer>
-  <aside 
+  <div 
     id="modal-edit" 
     class="modal hidden" 
     aria-hidden="true" 
@@ -88,7 +88,7 @@
     aria-labelledby="modal-title"
   >
     <div class="modal-content">
-      <button class="modal-close" arial-label="fermer">
+      <button class="modal-close" aria-label="fermer">
         <i class="fa-solid fa-xmark"></i>
       </button>
         <button class="modal-back hidden" aria-label="Retour">
@@ -111,12 +111,12 @@
               </span>
               <img class="preview-img hidden" src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBA==" alt="Aperçu de l'image">
             </label>
-            <input type="file" id="upload-photo" name="image" accept="image/png, image/jpeg" class="visually-hidden">
+            <input type="file" id="upload-photo" name="image" accept="image/png, image/jpeg" class="visually-hidden" aria-required="true">
             <div class="file-error error hidden" aria-live="polite"></div>
             <label for="title">Titre</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" aria-required="true">
             <label for="category-select">Catégorie</label>
-            <select name="category" id="category-select"></select>
+            <select name="category" id="category-select" aria-required="true"></select>
           </form>
         </div>
         <div class="modal-upload-error error hidden"></div>
@@ -133,6 +133,6 @@
       </button>
       
     </div>
-  </aside>
+  </div>
 </body>
 </html>
