@@ -1,4 +1,10 @@
 // API.JS
+// Fonctions pour communiquer avec l'API back-end :
+// - récupérer les catégories
+// - récupérer les projets
+// - supprimer un projet par son ID
+// - ajouter un projet (avec image, titre et catégorie)
+// Chaque fonction gère les erreurs HTTP et renvoie les données ou un booléen selon le cas
 
 // Récuperer les catégories
 export async function fetchCategories() {

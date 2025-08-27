@@ -1,4 +1,9 @@
 // MODAL.JS
+// Gestion de la modale :
+// - ouverture et fermeture de la modale principale avec gestion du focus pour l'accessibilité
+// - basculer entre le mode galerie et le mode formulaire d'upload
+// - réinitialiser les erreurs affichées lors de la fermeture
+// - configuration des boutons pour naviguer dans la modale
 
 import { hideGalleryError, hideUploadError, switchModalGallery, switchModalUpload } from "./display.js";
 
@@ -28,6 +33,7 @@ export function setupModal() {
 export function closeModal() {
   const modal = document.querySelector(".modal");
   const btnEdit = document.querySelector("#btn-edit");
+
   // focus sur le bouton d'ouverture' de la modale.
   btnEdit.focus();
   modal.classList.add("hidden");
@@ -44,12 +50,14 @@ export function setupModalButtons(categories) {
 
   modalBack.addEventListener("click", () => {
     switchModalGallery();
+
     // focus sur le bouton de fermeture de la modale.
     document.querySelector(".modal-close").focus();
   });
 
   btnUpload.addEventListener("click", () => {
     switchModalUpload(categories);
+
     // focus sur le premier input du formulaire
     document.querySelector(".upload-photo").focus();
   });

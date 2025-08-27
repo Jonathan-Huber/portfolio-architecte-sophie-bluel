@@ -1,4 +1,8 @@
 // auth.js
+// Fonctions pour gérer l'affichage et l'état de l'utilisateur :
+// - afficher ou masquer certains éléments selon que l'utilisateur est connecté ou invité
+// - gérer la déconnexion en supprimant le token et en réaffichant le mode invité
+// - ajouter l'écouteur pour le bouton de logout
 
 // Modifier l'affichage pour le mode connecté
 export function displayConnectedMode() {

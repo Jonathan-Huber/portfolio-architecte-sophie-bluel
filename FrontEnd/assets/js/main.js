@@ -1,4 +1,10 @@
 // MAIN.JS
+// Script principal du site :
+// - récupère les catégories et les projets depuis l'API
+// - affiche la galerie et les filtres sur la page d'accueil
+// - configure les filtres, la modale et le formulaire d'upload
+// - adapte l'affichage selon que l'utilisateur est connecté ou invité
+// - gère les erreurs de chargement et les affiche si nécessaire
 
 import { fetchCategories, fetchWorks } from "./api.js";
 import { displayConnectedMode, displayGuestMode } from "./auth.js";

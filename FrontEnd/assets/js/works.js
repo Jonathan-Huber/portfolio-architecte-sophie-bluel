@@ -1,4 +1,9 @@
 // WORKS.JS
+// Fonctions pour gérer les projets existants :
+// - activer les boutons de suppression dans la modale
+// - supprimer un projet via l'API
+// - mettre à jour le DOM de la galerie principale et de la modale
+// - afficher un message d'erreur si la suppression échoue
 
 import { deleteWorkAPI } from "./api.js";
 import { removeWorkFromDOM, showGalleryError,} from "./display.js";

@@ -1,5 +1,9 @@
 // DISPLAY.JS
-// Gestion de l'affichage : galerie principale, modale (gallery et upload), messages d'erreur, preview et suppression de projets
+// Gestion de l'affichage :
+// - Index : afficher les filtres, la galerie principale et gérer les erreurs globales
+// - Modale Galerie : afficher les projets dans la modale, basculer entre galerie et upload, gérer les erreurs et suppression de projets
+// - Modale Upload : basculer en mode formulaire, afficher l'aperçu des images, gérer les erreurs de fichier et d'upload
+// - Fonctions utilitaires pour ajouter, supprimer ou mettre à jour les éléments du DOM
 
 //================
 // Display : Index

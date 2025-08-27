@@ -1,4 +1,10 @@
 // FORMUPLOAD.JS
+// Gestion formulaire d'ajout d'un projet :
+// - contrôle la validité du fichier sélectionné (taille du fichier)
+// - affiche un aperçu ou un message d'erreur
+// - active/désactive le bouton de soumission selon les champs remplis
+// - envoie les données à l'API et met à jour la galerie et la modale
+// - gère les erreurs d'upload et l'accessibilité du formulaire
 
 import { addWorkAPI } from "./api.js";
 import { addWorkToGallery, addWorkToModal, clearPreview, displayFileError, displaySelectedImage, hideFileError, showUploadError, switchModalGallery } from "./display.js";
@@ -25,6 +31,7 @@ function isFileValid() {
   return true;
 }
 
+// Gérer l'aperçu du fichier sélectionné
 function handleFilePreview() {
   const file = fileInput.files[0];
   if (!file) {
@@ -50,7 +57,7 @@ function areFieldsComplete() {
          fileInput.files.length > 0;
 }
 
-// Mettre à jour le bouton
+// Mettre à jour le bouton de soumission
 function updateSubmitButton() {
   const ok = areFieldsComplete() && isFileValid();
   if (!ok) {
@@ -76,10 +83,10 @@ async function handleFormSubmit(e) {
     addWorkToGallery(createdWork);
     addWorkToModal(createdWork);
 
-    form.reset();         // vider des champs  du formulaire
-    clearPreview();       // vider  la preview de l'input files
-    hideFileError();      // vider la div des messages d'erreur file
-    updateSubmitButton(); // 
+    form.reset();
+    clearPreview();
+    hideFileError();
+    updateSubmitButton();
     setupDeleteButtons();
 
     switchModalGallery();
