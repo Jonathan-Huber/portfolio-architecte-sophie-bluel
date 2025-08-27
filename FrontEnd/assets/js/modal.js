@@ -5,7 +5,7 @@
 // - réinitialiser les erreurs affichées lors de la fermeture
 // - configuration des boutons pour naviguer dans la modale
 
-import { hideGalleryError, hideUploadError, switchModalGallery, switchModalUpload } from "./display.js";
+import { hideGalleryError, switchModalGallery, switchModalUpload } from "./display.js";
 
 // Configurer la modale : ouverture, fermeture et clic en dehors pour la fermer
 export function setupModal() {
@@ -40,7 +40,6 @@ export function closeModal() {
   modal.setAttribute("aria-hidden", "true");
 
   hideGalleryError();
-  hideUploadError();
 }
 
 // Configurer les boutons de la modale pour switcher entre gallery et upload
