@@ -1,7 +1,7 @@
 // FORMUPLOAD.JS
 
 import { addWorkAPI } from "./api.js";
-import { addWorkToGallery, addWorkToModal, clearPreview, displayFileError, displaySelectedImage, hideFileError, hideUploadError, showUploadError, switchModalGallery } from "./display.js";
+import { addWorkToGallery, addWorkToModal, clearPreview, displayFileError, displaySelectedImage, hideFileError, showUploadError, switchModalGallery } from "./display.js";
 import { closeModal } from "./modal.js";
 import { setupDeleteButtons } from "./works.js";
 

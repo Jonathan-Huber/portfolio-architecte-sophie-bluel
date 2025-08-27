@@ -258,13 +258,6 @@ export function showUploadError(message) {
   uploadErrorDiv.classList.remove("hidden");
 }
 
-// Masquer le message d'erreur pour l'upload
-export function hideUploadError() {
-  const uploadErrorDiv = document.querySelector(".modal-upload-error");
-  uploadErrorDiv.textContent = "";
-  uploadErrorDiv.classList.add("hidden");
-}
-
 //========================
 // Display : Index & Modal
 //========================
