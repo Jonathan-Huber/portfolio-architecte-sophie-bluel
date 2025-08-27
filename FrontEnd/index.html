@@ -47,6 +47,7 @@
           <p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
         </article>
       </section>
+
       <section id="portfolio">
           <div class="portfolio-header">
             <h2>Mes Projets</h2>
@@ -58,6 +59,7 @@
         <div class="index-error error hidden" aria-live="polite"></div>
         <div class="gallery"></div>
       </section>
+
       <section id="contact" class="form-section">
         <h2>Contact</h2>
         <p>Vous avez un projet ? Discutons-en !</p>
@@ -71,8 +73,10 @@
           <input class="btn" type="submit" value="Envoyer">
         </form>
       </section>
+
     </main>
   </div>
+
   <footer>
     <nav>
       <ul>
@@ -80,57 +84,63 @@
       </ul>
     </nav>
   </footer>
-  <div 
-    id="modal-edit" 
-    class="modal hidden" 
-    aria-hidden="true" 
-    role="dialog" 
-    aria-labelledby="modal-title"
-  >
+
+  <!-- Modale -->
+  <div id="modal-edit" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+
     <div class="modal-content">
+      <!-- Bouton de fermeture de la modale -->
       <button class="modal-close" aria-label="fermer">
         <i class="fa-solid fa-xmark"></i>
       </button>
-        <button class="modal-back hidden" aria-label="Retour">
+
+      <!-- Bouton de retour sur la galerie de la modale -->
+      <button class="modal-back hidden" aria-label="Retour">
         <img src="./assets/icons/arrow-left.svg" alt="Retour">
-        </button>
+      </button>
+
       <h3 id="modal-title">Galerie photo</h3>
+
+      <!-- Galerie de la modale -->
       <div class="modal-gallery-container ">
         <div class="modal-gallery"></div>
         <div class="modal-gallery-error error hidden" aria-live="polite"></div>
       </div>
 
+      <!-- Formulaire de la modale -->
       <div class="modal-upload-container hidden">
         <div class="modal-upload form-section">
           <form action="#" id="modal-upload-form" class="modal-upload-form" method="post">
+
             <label for="upload-photo" class="upload-photo" tabindex="0">
               <span class="upload-info">
-              <img class="upload-img" src="./assets/icons/picture.svg" alt="">
-              <span class="upload-btn">+ Ajouter photo</span>
-              <span class="upload-info-text">jpg, png : 4mo max</span>
+                <img class="upload-img" src="./assets/icons/picture.svg" alt="">
+                <span class="upload-btn">+ Ajouter photo</span>
+                <span class="upload-info-text">jpg, png : 4mo max</span>
               </span>
               <img class="preview-img hidden" src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBA==" alt="Aperçu de l'image">
             </label>
             <input type="file" id="upload-photo" name="image" accept="image/png, image/jpeg" class="visually-hidden" aria-required="true">
+
             <div class="file-error error hidden" aria-live="polite"></div>
+
             <label for="title">Titre</label>
             <input type="text" name="title" id="title" aria-required="true">
+
             <label for="category-select">Catégorie</label>
             <select name="category" id="category-select" aria-required="true"></select>
+
           </form>
         </div>
+        
         <div class="modal-upload-error error hidden" aria-live="polite"></div>
+
       </div>
+
       <hr class="modal-separator">
+
       <button id="btn-add-photo" class="btn">Ajouter une photo</button>
-      <button 
-        type="submit" 
-        id="btn-validate" 
-        class="btn hidden" 
-        form="modal-upload-form" 
-        disabled>
-        Valider
-      </button>
+      <button type="submit" id="btn-validate" class="btn hidden" form="modal-upload-form" disabled>Valider</button>
       
     </div>
   </div>
