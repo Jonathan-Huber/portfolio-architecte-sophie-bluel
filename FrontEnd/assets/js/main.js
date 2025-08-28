@@ -7,7 +7,7 @@
 // - gère les erreurs de chargement et les affiche si nécessaire
 
 import { fetchCategories, fetchWorks } from "./api.js";
-import { displayConnectedMode, displayGuestMode } from "./auth.js";
+import { checkAuthState } from "./auth.js";
 import { displayFilters, displayWorks, displayWorksModal, showIndexError } from "./display.js";
 import { setupFilter } from "./filters.js";
 import { setupFormListeners } from "./formUpload.js";
@@ -16,7 +16,7 @@ import { setupDeleteButtons } from "./works.js";
 
 // Initialiser la page
 async function init() {
-  const token = localStorage.getItem('authToken');
+  checkAuthState();
 
   let categories = [];
   try {
@@ -43,15 +43,13 @@ async function init() {
     showIndexError("Impossible de charger la galerie. Vérifiez votre connexion ou réessayez plus tard.");
   }
 
+    const token = localStorage.getItem('authToken');
     if (token) {
-      displayConnectedMode();
       displayWorksModal(works);
       setupDeleteButtons();
       setupModal();
       setupModalButtons(categories);
       setupFormListeners();
-    } else {
-      displayGuestMode();
     }
 }
 

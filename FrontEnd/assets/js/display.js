@@ -3,7 +3,8 @@
 // - Index : afficher les filtres, la galerie principale et gérer les erreurs globales
 // - Modale Galerie : afficher les projets dans la modale, basculer entre galerie et upload, gérer les erreurs et suppression de projets
 // - Modale Upload : basculer en mode formulaire, afficher l'aperçu des images, gérer les erreurs de fichier et d'upload
-// - Fonctions utilitaires pour ajouter, supprimer ou mettre à jour les éléments du DOM
+// - Index & Modal : ajouter, supprimer ou mettre à jour les éléments du DOM
+// - Auth : modifier l'affichage en fonction de l'état utilisateur
 
 //================
 // Display : Index
@@ -271,4 +272,25 @@ export function removeWorkFromDOM(workId, container) {
 
 const figure = container.querySelector(`figure[data-id='${workId}']`);
   if (figure) figure.remove();
+}
+
+//================
+// Display : Auth
+//================
+// Fonctions pour modifier l'affichage en fonction de l'état utilisateur
+
+export function displayConnectedMode() {
+  document.querySelector("#edit-banner").classList.remove("hidden");
+  document.querySelector("#li-login").classList.add("hidden");
+  document.querySelector("#li-logout").classList.remove("hidden");
+  document.querySelector("#btn-edit").classList.remove("hidden");
+  document.querySelector(".filters-container").classList.add("hidden");
+}
+
+export function displayGuestMode() {
+  document.querySelector("#edit-banner").classList.add("hidden");
+  document.querySelector("#li-login").classList.remove("hidden");
+  document.querySelector("#li-logout").classList.add("hidden");
+  document.querySelector("#btn-edit").classList.add("hidden");
+  document.querySelector(".filters-container").classList.remove("hidden");
 }
