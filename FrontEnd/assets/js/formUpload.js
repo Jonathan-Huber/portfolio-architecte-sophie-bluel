@@ -24,10 +24,18 @@ function isFileValid() {
   if (!file) return false;
 
   const maxSize = 4 * 1024 * 1024;
+  const validTypes = ["image/jpeg", "image/png"];
 
   if (file.size > maxSize) {
+    fileInput.errorMessage = "Image trop lourde (max 4 Mo).";
     return false;
-  } else
+  }
+
+  if (!validTypes.includes(file.type)) {
+    fileInput.errorMessage = "Format non supporté (uniquement JPG ou PNG).";
+    return false;
+  }
+
   return true;
 }
 
@@ -42,7 +50,7 @@ function handleFilePreview() {
 
   if (!isFileValid()) {
     clearPreview();
-    displayFileError();
+    displayFileError(fileInput.errorMessage);
     return;
   }
 

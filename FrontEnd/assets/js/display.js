@@ -243,9 +243,9 @@ export function clearPreview() {
 }
 
 // Afficher le message d'erreur du fichier
-export function displayFileError() {
+export function displayFileError(message) {
   const fileErrorDiv = document.querySelector(".file-error");
-  fileErrorDiv.textContent = "Image trop lourde (max 4 Mo).";
+  fileErrorDiv.textContent = message;
   fileErrorDiv.classList.remove("hidden");
 }
 
